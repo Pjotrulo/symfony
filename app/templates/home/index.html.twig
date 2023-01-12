@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+	body {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	a {
+		text-decoration: none;
+		color: white;
+		background-color: #154c79;
+		border-radius: 1.5rem;
+		padding: 0.5rem 2rem;
+	}
+
+	a:last-child {
+		margin-left: 1rem;
+	}
+
+	a:hover {
+		background-color: #063970;
+	}
+</style>
+<a href="http://127.0.0.1:8000/sign-in">SignIn</a>
+<a href="http://127.0.0.1:8000/register">SignUp</a>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        form, form div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btn {
+            background-color: #154c79;
+            border-radius: 1.5rem;
+            padding: 0.5rem 2rem;
+            border: none;
+            color: white;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #063970;
+            cursor: pointer;
+        }
+    </style>
+
+    <h1>SignUp</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        
+        <button type="submit" class="btn">SignUp</button>
+    {{ form_end(registrationForm) }}
+    <a href="http://127.0.0.1:8000/sign-in" class="btn">SignIn</a>
+{% endblock %}

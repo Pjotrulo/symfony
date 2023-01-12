@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+<style>
+    body {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+        flex-direction: column;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        background-color: #154c79;
+		border-radius: 1.5rem;
+		padding: 0.5rem 2rem;
+        border: none;
+        color: white;
+        margin-top: 1rem;
+    }
+
+    .btn:hover {
+        background-color: #063970;
+        cursor: pointer;
+    }
+</style>
+<h1>Sign In</h1>
+<form action="{{ path('app_sign_in') }}" class="form" method="post">
+    <label for="username">Email:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="_password"/>
+
+    {# If you want to control the URL the user is redirected to on success #}
+    <input type="hidden" name="_target_path" value="/admin"/>
+
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+    <button type="submit" class="btn">Sign In</button>
+</form>
+<a href="http://127.0.0.1:8000/register" class="btn">SignUp</a>
+{% endblock %}
